@@ -140,7 +140,10 @@ func NewRetryableClient(isDebugRetryTimings bool) *retryablehttp.Client {
 
 // GetBuild ...
 func (app App) GetBuild(buildSlug string) (build Build, err error) {
-	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s/v0.1/apps/%s/builds/%s", app.BaseURL, app.Slug, buildSlug), nil)
+    slugsPair := strings.Split(buildSlug, ":")
+    appSlug := slugsPair[0]
+    buildId := slugsPair[1]
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s/v0.1/apps/%s/builds/%s", app.BaseURL, appSlug, buildId), nil)
 	if err != nil {
 		return Build{}, err
 	}
