@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+    "regexp"
 
 	"github.com/bitrise-io/go-steputils/stepconf"
 	"github.com/bitrise-io/go-utils/log"
@@ -40,7 +41,14 @@ func main() {
 
 	log.Infof("Waiting for builds:")
 
-	buildSlugs := strings.Split(cfg.BuildSlugs, "\n")
+
+	regex, err := regexp.Compile("\n\n")
+    if err != nil {
+        return
+    }
+    buildSlugsTemp = regex.ReplaceAllString(cfg.BuildSlugs, "\n")
+
+    buildSlugs := strings.Split(buildSlugsTemp, "\n")
 
 	if err := app.WaitForBuilds(buildSlugs, func(build bitrise.Build) {
 		var failReason string
