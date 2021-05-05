@@ -143,7 +143,9 @@ func (app App) GetBuild(buildSlug string) (build Build, err error) {
     slugsPair := strings.Split(buildSlug, ":")
     appSlug := slugsPair[0]
     buildId := slugsPair[1]
-	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s/v0.1/apps/%s/builds/%s", app.BaseURL, appSlug, buildId), nil)
+    buildUrl := fmt.Sprintf("%s/v0.1/apps/%s/builds/%s", app.BaseURL, appSlug, buildId)
+    fmt.Println("BuildUrl:", buildUrl)
+	req, err := http.NewRequest(http.MethodGet, buildUrl, nil)
 	if err != nil {
 		return Build{}, err
 	}
