@@ -46,7 +46,7 @@ func main() {
     if err != nil {
         return
     }
-    buildSlugsTemp = regex.ReplaceAllString(cfg.BuildSlugs, "\n")
+    buildSlugsTemp := regex.ReplaceAllString(cfg.BuildSlugs, "\n")
 
     buildSlugs := strings.Split(buildSlugsTemp, "\n")
 
