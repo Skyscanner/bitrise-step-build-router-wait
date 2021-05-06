@@ -41,12 +41,6 @@ func main() {
 
 	log.Infof("Waiting for builds:")
 
-
-	regex, err := regexp.Compile("\n\n")
-    if err != nil {
-        return
-    }
-
     buildSlugs := strings.Split(cfg.BuildSlugs, "\n")
     fmt.Println("Length:", len(buildSlugs))
 
