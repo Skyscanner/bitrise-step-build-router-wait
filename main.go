@@ -41,7 +41,6 @@ func main() {
 	log.Infof("Waiting for builds:")
 
     buildSlugs := strings.Split(cfg.BuildSlugs, "\n")
-    fmt.Println("Length:", len(buildSlugs))
 
 	if err := app.WaitForBuilds(buildSlugs, func(build bitrise.Build) {
 		var failReason string
