@@ -46,9 +46,9 @@ func main() {
     if err != nil {
         return
     }
-    buildSlugsTemp := regex.ReplaceAllString(cfg.BuildSlugs, "\n")
 
-    buildSlugs := strings.Split(buildSlugsTemp, "\n")
+    buildSlugs := strings.Split(cfg.BuildSlugs, "\n")
+    fmt.Println("Length:", len(buildSlugs))
 
 	if err := app.WaitForBuilds(buildSlugs, func(build bitrise.Build) {
 		var failReason string
