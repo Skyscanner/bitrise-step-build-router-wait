@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-    "regexp"
 
 	"github.com/bitrise-io/go-steputils/stepconf"
 	"github.com/bitrise-io/go-utils/log"
